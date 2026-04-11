@@ -15,7 +15,11 @@ func FiveHourRateLimitPart(_ context.Context, input *domain.StatuslineInput) (*s
 	}
 
 	rl := input.RateLimits.FiveHour
-	result := formatRateLimitBar("5h", rl.UsedPercentage, rl.ResetsAt)
+	if rl.UsedPercentage == nil {
+		return nil, nil
+	}
+
+	result := formatRateLimitBar("5h", *rl.UsedPercentage, rl.ResetsAt)
 	return &result, nil
 }
 
@@ -28,7 +32,11 @@ func SevenDayRateLimitPart(_ context.Context, input *domain.StatuslineInput) (*s
 	}
 
 	rl := input.RateLimits.SevenDay
-	result := formatRateLimitBar("7d", rl.UsedPercentage, rl.ResetsAt)
+	if rl.UsedPercentage == nil {
+		return nil, nil
+	}
+
+	result := formatRateLimitBar("7d", *rl.UsedPercentage, rl.ResetsAt)
 	return &result, nil
 }
 

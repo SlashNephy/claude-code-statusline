@@ -33,6 +33,8 @@ type RateLimitsInfo struct {
 
 // RateLimitEntry は個別のレートリミットエントリを表す。
 type RateLimitEntry struct {
-	UsedPercentage float64 `json:"used_percentage"`
-	ResetsAt       *int64  `json:"resets_at"`
+	UsedPercentage *float64 `json:"used_percentage"`
+	ResetsAt       *int64   `json:"resets_at"`
+}
+
 }
