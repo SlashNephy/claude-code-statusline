@@ -18,6 +18,7 @@ var parts = []part.Part{
 	part.ContextWindowPart,
 	part.FiveHourRateLimitPart,
 	part.SevenDayRateLimitPart,
+	part.CostPart,
 }
 
 func main() {

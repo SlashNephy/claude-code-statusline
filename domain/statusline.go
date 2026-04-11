@@ -8,6 +8,7 @@ type StatuslineInput struct {
 	Model         *ModelInfo         `json:"model"`
 	ContextWindow *ContextWindowInfo `json:"context_window"`
 	RateLimits    *RateLimitsInfo    `json:"rate_limits"`
+	Cost          *Cost              `json:"cost"`
 }
 
 // WorkspaceInfo はワークスペース情報を表す。
@@ -37,4 +38,7 @@ type RateLimitEntry struct {
 	ResetsAt       *int64   `json:"resets_at"`
 }
 
+// Cost はコスト情報を表す。
+type Cost struct {
+	TokenCostUSD *float64 `json:"token_cost_usd"`
 }
