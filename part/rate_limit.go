@@ -42,18 +42,34 @@ func SevenDayRateLimitPart(_ context.Context, input *domain.StatuslineInput) (*s
 
 var _ = Part(SevenDayRateLimitPart)
 
-// formatRateLimitBar はレートリミット用のバーを生成する。リセット時刻があれば残り時間も表示する。
+// formatRateLimitBar はレートリミット用のバーを生成する。
+// リセット時刻があれば残り時間とリセット時刻 (HH:mm もしくは M/D HH:mm) も表示する。
 func formatRateLimitBar(label string, pct float64, resetsAt *int64) string {
 	bar := formatBar(label, pct)
 	if resetsAt == nil {
 		return bar
 	}
 
-	remaining := time.Until(time.Unix(*resetsAt, 0))
+	resetTime := time.Unix(*resetsAt, 0)
+	remaining := time.Until(resetTime)
 	if remaining <= 0 {
 		return bar
 	}
-	return fmt.Sprintf("%s [%s%s%s]", bar, Dim, formatDuration(remaining), Reset)
+	return fmt.Sprintf("%s [%s%s → %s%s]",
+		bar, Dim,
+		formatDuration(remaining),
+		formatResetTime(resetTime, remaining),
+		Reset,
+	)
+}
+
+// formatResetTime はリセット時刻を残り時間に応じてフォーマットする。
+// 残り 24 時間未満は "HH:mm"、24 時間以上は "M/D HH:mm" (月日はゼロ埋めなし)。
+func formatResetTime(t time.Time, remaining time.Duration) string {
+	if remaining < 24*time.Hour {
+		return t.Format("15:04")
+	}
+	return t.Format("1/2 15:04")
 }
 
 // formatDuration は Duration を "1h30m" や "3d2h" のような短い文字列に変換する。
