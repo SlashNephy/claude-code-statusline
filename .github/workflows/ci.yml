@@ -13,7 +13,7 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-      - uses: jdx/mise-action@dad1bfd3df957f44999b559dd69dc1671cb4e9ea # v4.2.1
+      - uses: jdx/mise-action@f10502fc09dadecfefb962fff68ce77213930204 # v4.2.2
       - run: make build
 
   lint:
@@ -22,5 +22,5 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-      - uses: jdx/mise-action@dad1bfd3df957f44999b559dd69dc1671cb4e9ea # v4.2.1
+      - uses: jdx/mise-action@f10502fc09dadecfefb962fff68ce77213930204 # v4.2.2
       - run: make lint
