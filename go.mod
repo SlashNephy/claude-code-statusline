@@ -3,7 +3,7 @@ module github.com/SlashNephy/claude-code-statusline
 go 1.26.2
 
 require (
-	github.com/goccy/go-json v0.10.6
+	github.com/goccy/go-json v0.11.1
 	github.com/stretchr/testify v1.12.1
 )
 
