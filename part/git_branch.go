@@ -11,6 +11,10 @@ import (
 
 // GitBranchPart は Git ブランチ名を返す Part。
 func GitBranchPart(_ context.Context, input *domain.StatuslineInput) (*string, error) {
+	if input.Workspace == nil {
+		return nil, nil
+	}
+
 	branch := getGitBranch(input.Workspace.CurrentDir)
 	if branch == nil {
 		return nil, nil
@@ -24,6 +28,10 @@ var _ = Part(GitBranchPart)
 
 // getGitBranch は指定ディレクトリの Git ブランチ名を取得する。
 func getGitBranch(dir string) *string {
+	if dir == "" {
+		return nil
+	}
+
 	// .git/HEAD を直接読むことで、git コマンドの fork+exec コストを回避する
 	gitDir := findGitDir(dir)
 	if gitDir == "" {
@@ -42,7 +50,7 @@ func getGitBranch(dir string) *string {
 	}
 
 	// detached HEAD → 短縮ハッシュ (先頭 7 文字)
-	if len(head) >= 7 {
+	if len(head) >= 7 && !strings.HasPrefix(head, "ref: ") {
 		short := head[:7]
 		return &short
 	}
