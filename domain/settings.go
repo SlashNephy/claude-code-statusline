@@ -2,6 +2,7 @@
 package domain
 
 import (
+	"errors"
 	"os"
 	"path/filepath"
 
@@ -22,6 +23,9 @@ func LoadUserSettings() (*UserSettings, error) {
 
 	data, err := os.ReadFile(filepath.Join(home, ".claude", "settings.json")) //nolint:gosec // パスは固定のホームディレクトリ配下
 	if err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			return &UserSettings{}, nil
+		}
 		return nil, err
 	}
 
