@@ -15,8 +15,8 @@ func ModelPart(_ context.Context, input *domain.StatuslineInput) (*string, error
 	model := *input.Model.DisplayName
 
 	settings, err := domain.LoadUserSettings()
-	if err != nil {
-		return nil, err
+	if err != nil || settings == nil {
+		return &model, nil
 	}
 
 	if effort := settings.EffortLevel; effort != nil {
