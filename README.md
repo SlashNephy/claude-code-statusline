@@ -28,15 +28,15 @@ $ make install
 ターミナルのセッションでインストールする。
 
 ```
-/plugin install statusline --marketplace SlashNephy/claude-code-statusline
+/plugin install quota --marketplace SlashNephy/claude-code-statusline
 ```
 
 シェルからインストールする場合は次のとおり。
 
 ```bash
-claude plugin install statusline --marketplace SlashNephy/claude-code-statusline
+claude plugin install quota --marketplace SlashNephy/claude-code-statusline
 ```
 
-Claude Desktop では `/plugin` を使えない。プロンプト欄の横の + から Plugins を開き、Add marketplace で `SlashNephy/claude-code-statusline` を追加してから、Add plugin で `statusline` を追加する。
+Claude Desktop では `/plugin` を使えない。プロンプト欄の横の + から Plugins を開き、Add marketplace で `SlashNephy/claude-code-statusline` を追加してから、Add plugin で `quota` を追加する。
 
 開発時は `claude plugin validate mod` で検証し、`claude plugin test mod` でテストを実行する。

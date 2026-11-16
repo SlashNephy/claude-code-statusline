@@ -1,5 +1,5 @@
 {
-  "name": "statusline",
+  "name": "quota",
   "version": "0.1.0",
   "description": "コンテキストとクオータの使用率をステータス行に、詳細をペインに表示する",
   "author": { "name": "SlashNephy" },

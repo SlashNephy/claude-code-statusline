@@ -3,10 +3,10 @@ import type { EngineInterface as Engine, Register, SessionUsage, SessionVersion 
 
 import type { Limit, Snapshot } from '../types'
 
-const PANE = 'statusline'
-const TITLE = 'Statusline'
+const PANE = 'quota'
+const TITLE = 'Quota'
 // Snapshot のフィールドを変えたら shape を上げる。リロード後も古い値が残るため。
-const snapshot = atom({ plugin: 'statusline', key: 'snapshot' } as const, null, {
+const snapshot = atom({ plugin: 'quota', key: 'snapshot' } as const, null, {
   shape: 'snapshot-1',
 })
 
@@ -140,7 +140,7 @@ export const register: Register = on => {
   on('command.run', { command: 'quota' }, async $ => {
     await $.ui.open({ id: PANE, title: TITLE })
     await refresh($).catch(() => undefined)
-    return { text: 'Statusline pane opened.' }
+    return { text: 'Quota pane opened.' }
   })
 
   on('session.measure', async ($, e, next) => {

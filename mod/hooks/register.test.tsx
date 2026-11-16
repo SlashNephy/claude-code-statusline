@@ -1,11 +1,11 @@
 import { expect, test } from 'claude-code/testing'
 
 const PANE = {
-  plugin: 'statusline',
+  plugin: 'quota',
   component: 'Pane',
-  requestId: 'statusline',
+  requestId: 'quota',
   props: {
-    title: 'Statusline',
+    title: 'Quota',
     isFocused: false,
     bodyColumns: 40,
     placement: 'dock',

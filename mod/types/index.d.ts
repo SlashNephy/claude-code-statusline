@@ -14,6 +14,6 @@ export type Snapshot = {
 
 declare module 'claude-code' {
   interface PluginState {
-    statusline: { snapshot: Shaped<Snapshot | null> }
+    quota: { snapshot: Shaped<Snapshot | null> }
   }
 }
