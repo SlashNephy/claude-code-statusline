@@ -1,0 +1,6 @@
+{
+  "name": "claude-code-statusline",
+  "description": "claude-code-statusline と同じ情報を表示する Claude Code の Mod",
+  "owner": { "name": "SlashNephy" },
+  "plugins": [{ "name": "quota", "source": "./mod" }]
+}
